@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="otherstyles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="index.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,9 +12,17 @@
     <title>Simon</title>
 </head>
 <body>
-    <div id="banner" data-audio="sounds/lose.mp3">
-        <button id="start">start
-        </button>
+    <!--<button id="overlay">overlay</button>-->
+    <div class="banner-container">
+        <div id="banner"></div>
+        <button id="start">start</button>
+    </div>
+    <div class="high-scores-container">
+        <div class="high-scores-list-box">
+            <div id="game-over-banner" data-audio="sounds/lose.mp3"></div>
+            <div class="high-scores-list">Your high scores:</div>
+            <button id="play">play</button>
+        </div>
     </div>
     <div class="container">
         <audio id="win1" src="sounds/levelup1.mp3" style="display:none;"></audio>

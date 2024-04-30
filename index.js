@@ -1,38 +1,60 @@
+const overlayButton = document.getElementById('overlay')
+overlayButton.addEventListener('click', ()=> {
+    gameEndScreen.style.display = "flex"
+    document.body.style.background = 'rgb(70, 25, 112)'
+})
+
+
 
 const gameButtons = document.getElementsByClassName('game-button')
 const buttons = [...gameButtons]
 const audioPlayer = document.getElementById('audio-player');
 const banner = document.getElementById('banner')
+const bannerContainer = document.querySelector('.banner-container')
 const win1 = document.getElementById('win1')
 const win2 = document.getElementById('win2')
 const win3 = document.getElementById('win3')
 const start = document.getElementById('start')
+const play = document.getElementById('play')
+const gameOverBanner = document.getElementById('game-over-banner')
+const gameEndScreen = document.querySelector('.high-scores-container')
 
   let gameSoFar = [];
   let thisRound = [];
   let roundNumber = 0;
   function roundUpdater() {
-        banner.innerText = `Round ${roundNumber}`
+        banner.innerHTML = `Round <span style='color: orange;'>${roundNumber}</span>`
         thisRound = [];
   }
 
-start.addEventListener('click', () => {
+start.addEventListener('click', startUp)
+play.addEventListener('click', () => {
+    gameEndScreen.style.display = 'none'
+    document.body.style.background = 'blueviolet'
+    startUp
+})
+
+function startUp() {
+    start.style.display = 'none'
+    banner.style.display = 'initial'
     if (roundNumber == 0) {
     roundNumber++;
     roundUpdater();
     setTimeout(newRound, 1000)
     } else { return }
-})
+}
 
  let gameStarted = false;
  let result;
  let winCount = 1;
 
 //function runGame() {
-    function fail() {
-        const fail = banner.getAttribute('data-audio')
-        playAudio(fail)
-        banner.innerHTML = `made it to round ${roundNumber}! <br><button id="start">play</button>`
+    function gameOver() {
+        gameEndScreen.style.display = 'flex'
+        const gameOver = gameOverBanner.getAttribute('data-audio')
+        playAudio(gameOver)
+        gameOverBanner.innerHTML = `made it to round <span style='color:orange;'>${roundNumber}</span>!`
+        
         gameSoFar = [];
         thisRound = [];
         roundNumber = 0;
@@ -62,7 +84,9 @@ start.addEventListener('click', () => {
         setTimeout(() => buttonInQuestion.classList.remove('signal'), 200)
         gameStarted = true;
     }
-buttons.forEach(button => {
+buttons.forEach(load)
+    
+function load(button) {
     button.addEventListener('click', (event) => {
         let butt = event.target;
         const dataNumber = Number(butt.getAttribute('data-number'))
@@ -70,7 +94,7 @@ buttons.forEach(button => {
         let placement = (thisRound.length - 1)
         if (thisRound[placement] !== gameSoFar[placement]) {
             console.log(`failed at number ${thisRound.length} out of ${gameSoFar.length}`)
-            fail();
+            gameOver();
         } else if ((thisRound[placement] == gameSoFar[placement]) && (gameSoFar.length > thisRound.length)) {
             const sound = button.getAttribute('data-audio')  
             playAudio(sound)
@@ -88,4 +112,4 @@ buttons.forEach(button => {
 
             setTimeout(reset, 700)                
         }
-    })})
+    })}
