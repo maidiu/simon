@@ -1,12 +1,12 @@
 
-const buttons = document.querySelectorAll('button');
+const gameButtons = document.getElementsByClassName('game-button')
+const buttons = [...gameButtons]
 const audioPlayer = document.getElementById('audio-player');
 const banner = document.getElementById('banner')
 const win1 = document.getElementById('win1')
 const win2 = document.getElementById('win2')
 const win3 = document.getElementById('win3')
-  
-
+const start = document.getElementById('start')
 
   let gameSoFar = [];
   let thisRound = [];
@@ -16,11 +16,11 @@ const win3 = document.getElementById('win3')
         thisRound = [];
   }
 
-document.addEventListener('keydown', () => {
+start.addEventListener('click', () => {
     if (roundNumber == 0) {
     roundNumber++;
     roundUpdater();
-    setTimeout(newRound(), 3000)
+    setTimeout(newRound, 1000)
     } else { return }
 })
 
@@ -32,7 +32,7 @@ document.addEventListener('keydown', () => {
     function fail() {
         const fail = banner.getAttribute('data-audio')
         playAudio(fail)
-        banner.innerText = `made it to round ${roundNumber}! press any key to play again`
+        banner.innerHTML = `made it to round ${roundNumber}! <br><button id="start">play</button>`
         gameSoFar = [];
         thisRound = [];
         roundNumber = 0;
@@ -40,20 +40,15 @@ document.addEventListener('keydown', () => {
         gameStarted = false;
     }
 
-
-
-    
-
     function playAudio(sound) {
         const audioPlayer = document.getElementById('audio-player');
         audioPlayer.src = sound;
         audioPlayer.play();
     }
 
-
-    
     function newRound() {
-        const buttons = document.querySelectorAll('button')
+        const gameButtons = document.getElementsByClassName('game-button')
+        const buttons = [...gameButtons]
         result = Math.floor(Math.random() * 4)
         gameSoFar.push(result)
         console.log(`this round's addition: ${result}`)
@@ -94,42 +89,3 @@ buttons.forEach(button => {
             setTimeout(reset, 700)                
         }
     })})
-
-
-        
-        /*buttons.forEach(button => {
-            button.addEventListener('click', (event)=> {
-                let butt = event.target;
-                const dataNumber = Number(butt.getAttribute('data-number'))
-                if (thisRound.length < (gameSoFar.length - 1)) {
-                    thisRound.push(dataNumber)
-                    console.log(`you chose: ${dataNumber}`)
-                    console.log(`this round so far: ${thisRound}`)
-                    for (let i = 0; i < thisRound.length; i++) {
-                        if (!thisRound[i] == gameSoFar[i]) {
-                            fail();
-                            console.log('failed')
-                        } else { 
-                            const sound = button.getAttribute('data-audio')
-                            playAudio(sound)
-                            console.log(`number ${thisRound[i]} out of ${gameSoFar.length} logged`)
-                        }} 
-                } else if (thisRound.length == (gameSoFar.length - 1)) {
-                    thisRound.push(dataNumber)
-                    for (let i = 0; i < thisRound.length; i++) {
-                        if (!thisRound[i] == gameSoFar[i]) {
-                            console.log(` failed at number ${thisRound[i]} out of ${gameSoFar.length}`)
-                            fail();
-                        } else { 
-                            console.log(`you chose: ${dataNumber}`)
-                            console.log(`this round's numbers': ${thisRound}`)
-                            console.log('you won this round')
-                            roundNumber++;
-                            roundUpdater();
-                            setTimeout(newRound(), 1000) 
-                        }}
-                }
-            })
-        })*/
-
-    

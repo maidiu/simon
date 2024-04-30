@@ -1,0 +1,102 @@
+* {
+    border: white solid 2px;
+}
+@media screen and (width < 800px) {
+    
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet;
+    color:rgb(164, 255, 225);
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    height: 85vh;
+}
+
+#banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    margin-bottom: 7vh;
+    width: 100%;
+    font-size: 1.3em;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 50vh;
+    width: 100vw;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+
+}
+
+#left-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    margin: 0;
+    padding: 0;
+
+}
+
+#right-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.game-button {
+    height: 40vw;
+    width: 40vw;
+    border: rgb(70, 25, 112) solid 5px;
+    border-radius: 20px;
+    
+}
+
+#start {
+    height: 10vh;
+    width: 40vw;
+    background-color: rgb(164, 255, 225);
+    border: rgb(70, 25, 112) solid 5px;
+    border-radius: 20px;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-size: 6vw;
+    padding: 0;
+    color:rgb(70, 25, 112)
+}
+
+#red {
+    background-color: red;
+}
+
+#green {
+    background-color: green;
+}
+
+#yellow {
+    background-color: yellow;
+}
+
+#blue {
+    background-color: blue;
+}
+
+.game-button:active {
+    background-color: silver !important;
+    box-shadow: 0 0 10px 5px rgb(255, 201, 114);
+}
+
+.signal {
+    background-color: black !important;
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="otherstyles.css">
     <script src="index.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,19 +11,22 @@
     <title>Simon</title>
 </head>
 <body>
-    <h1 id="banner" data-audio="sounds/lose.mp3">Press Any Key to Start</h1>
+    <div id="banner" data-audio="sounds/lose.mp3">
+        <button id="start">start
+        </button>
+    </div>
     <div class="container">
         <audio id="win1" src="sounds/levelup1.mp3" style="display:none;"></audio>
         <audio id="win2" src="sounds/levelup2.mp3" style="display:none;"></audio>
         <audio id="win3" src="sounds/levelup3.mp3" style="display:none;"></audio>
         
         <div id="left-buttons">
-            <button id="red" data-audio="sounds/cheep.mp3" data-number="0"></button>
-            <button id="green" data-audio="sounds/cling.mp3" data-number="2"></button>
+            <button class="game-button" id="red" data-audio="sounds/cheep.mp3" data-number="0"></button>
+            <button class="game-button" id="green" data-audio="sounds/cling.mp3" data-number="2"></button>
         </div>
         <div id="right-buttons">
-            <button id="yellow" data-audio="sounds/plong.mp3" data-number="1"></button>
-            <button id="blue" data-audio="sounds/plung.mp3" data-number="3"></button>
+            <button class="game-button" id="yellow" data-audio="sounds/plong.mp3" data-number="1"></button>
+            <button class="game-button" id="blue" data-audio="sounds/plung.mp3" data-number="3"></button>
         </div>
     </div>
     <audio id="audio-player" src=""></audio>
