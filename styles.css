@@ -1,0 +1,85 @@
+/* {
+    border: white solid 2px;
+}*/
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet;
+    color:rgb(164, 255, 225);
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    padding: 5vh;
+
+
+ 
+    height: 10vh;
+    margin: 0;
+    margin-top: 4vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 70vh;
+    width: 50vw;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+
+}
+
+#left-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    margin: 0;
+    padding: 0;
+
+}
+
+#right-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+button {
+    height: 30vh;
+    width: 30vh;
+    border: rgb(164, 255, 225) solid 5px;
+    border-radius: 20px;
+}
+
+#red {
+    background-color: red;
+}
+
+#green {
+    background-color: green;
+}
+
+#yellow {
+    background-color: yellow;
+}
+
+#blue {
+    background-color: blue;
+}
+
+button:active {
+    background-color: silver !important;
+    box-shadow: 0 0 10px 5px rgb(255, 201, 114);
+}
+
+.signal {
+    background-color: black !important;
+}
