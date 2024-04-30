@@ -33,7 +33,7 @@ body {
     flex-direction: row;
     height: 50vh;
     width: 100vw;
-    justify-content: space-around;
+    justify-content: center;
     margin: 0;
     padding: 0;
 
@@ -44,7 +44,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
 
-    margin: 0;
+    margin-right: 2vw;
     padding: 0;
 
 }
@@ -53,14 +53,14 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-left: 2vw;
 }
 
 .game-button {
-    height: 40vw;
-    width: 40vw;
     border: rgb(70, 25, 112) solid 5px;
     border-radius: 20px;
-    
+    width: 150px;
+    height: 150px; 
 }
 
 #start {
