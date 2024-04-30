@@ -1,8 +1,8 @@
-const overlayButton = document.getElementById('overlay')
+/*const overlayButton = document.getElementById('overlay')
 overlayButton.addEventListener('click', ()=> {
     gameEndScreen.style.display = "flex"
     document.body.style.background = 'rgb(70, 25, 112)'
-})
+})*/
 
 
 
