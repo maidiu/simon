@@ -10,6 +10,9 @@ const start = document.getElementById('start')
 const play = document.getElementById('play')
 const gameOverBanner = document.getElementById('game-over-banner')
 const gameEndScreen = document.querySelector('.high-scores-container')
+const howToPlayButton = document.querySelector('#how-to-play-button')
+const highScoresListBox = document.querySelector(".high-scores-list-box")
+const highScoresList = document.querySelector('.high-scores-list')
 
   let gameSoFar = [];
   let thisRound = [];
@@ -40,9 +43,22 @@ function startUp() {
  let winCount = 1;
  let newScore = 0;
 
+function howToPlay() {
+    highScoresListBox.style.lineHeight = '1.5'
+    highScoresList.style.textAlign = 'center'
+    gameEndScreen.style.display = 'flex'
+    gameOverBanner.innerText = 'how to play'
+    const howToPlayText = document.querySelector('.high-scores-list');
+    howToPlayText.innerHTML = `this is a 'simon' game<br><br>a pattern is created.<br><br> each round, another unit is added, and you enter the entirety.<br><br>how good is your memory?`
+}
+
+howToPlayButton.addEventListener('click', howToPlay)
+
 //function runGame() {
     function gameOver() {
         gameEndScreen.style.display = 'flex'
+        highScoresList.style.textAlign = 'left'
+        highScoresListBox.style.lineHeight = '.4'
         const gameOver = gameOverBanner.getAttribute('data-audio')
         playAudio(gameOver)
         //gameOverBanner.innerHTML = `made it to round <span style='color:orange;'>${roundNumber}</span>!`

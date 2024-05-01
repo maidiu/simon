@@ -18,9 +18,10 @@ body {
     padding: 0;
     top: 0;
     height: 85vh;
+    touch-action: manipulation;
 }
 
-.banner-container {
+.banner-container, .how-to-play {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -37,7 +38,7 @@ body {
     text-align: center;
 }
 
-#start {
+#start, #how-to-play-button {
     
     height: 10vh;
     width: 150px;
@@ -197,4 +198,11 @@ h2 {
     padding-bottom: 10px;
     color: rgb(40, 193, 135);
     font-weight: 600;
+}
+
+.how-to-play {
+    margin-top:4vh;
+    height: 20vh;
+    width: 100%;
+    font-size: 1.3em;
 }
