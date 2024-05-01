@@ -1,11 +1,3 @@
-/*const overlayButton = document.getElementById('overlay')
-overlayButton.addEventListener('click', ()=> {
-    gameEndScreen.style.display = "flex"
-    document.body.style.background = 'rgb(70, 25, 112)'
-})*/
-
-
-
 const gameButtons = document.getElementsByClassName('game-button')
 const buttons = [...gameButtons]
 const audioPlayer = document.getElementById('audio-player');
@@ -29,32 +21,39 @@ const gameEndScreen = document.querySelector('.high-scores-container')
 
 start.addEventListener('click', startUp)
 play.addEventListener('click', () => {
-    gameEndScreen.style.display = 'none'
-    document.body.style.background = 'blueviolet'
-    startUp
+    gameEndScreen.style.display = 'none';
+    document.body.style.background = 'blueviolet';
+    startUp();
 })
 
 function startUp() {
     start.style.display = 'none'
     banner.style.display = 'initial'
-    if (roundNumber == 0) {
     roundNumber++;
     roundUpdater();
+    newScore = 0;
     setTimeout(newRound, 1000)
-    } else { return }
 }
 
  let gameStarted = false;
  let result;
  let winCount = 1;
+ let newScore = 0;
 
 //function runGame() {
     function gameOver() {
         gameEndScreen.style.display = 'flex'
         const gameOver = gameOverBanner.getAttribute('data-audio')
         playAudio(gameOver)
-        gameOverBanner.innerHTML = `made it to round <span style='color:orange;'>${roundNumber}</span>!`
+        //gameOverBanner.innerHTML = `made it to round <span style='color:orange;'>${roundNumber}</span>!`
+        loadHighScores();
         
+        newScore = (roundNumber - 1) * 1000;
+        addHighScore(newScore);
+        
+        
+        console.log(newScore)
+        gameOverBanner.innerHTML = `you scored <span style='color:orange;'>${newScore}</span>!`
         gameSoFar = [];
         thisRound = [];
         roundNumber = 0;
@@ -113,3 +112,49 @@ function load(button) {
             setTimeout(reset, 700)                
         }
     })}
+
+
+
+
+
+
+
+
+
+const HIGH_SCORES_KEY = 'highScores';
+let highScores = [];
+
+// Load high scores from local storage
+function loadHighScores() {
+  const storedHighScores = localStorage.getItem(HIGH_SCORES_KEY);
+  if (storedHighScores) {
+    highScores = JSON.parse(storedHighScores);
+  }
+}
+
+// Save high scores to local storage
+function saveHighScores() {
+  localStorage.setItem(HIGH_SCORES_KEY, JSON.stringify(highScores));
+}
+
+// Display high scores on the webpage
+function displayHighScores() {
+  const highScoresList = document.querySelector('.high-scores-list');
+  let output = highScores.map((score, index) => {
+    const number = index + 1;
+    return `<ul>${number}. ${score.score} - ${score.date}</ul>`}).join('');
+    highScoresList.innerHTML = `<h2>high scores</h2> ${output}`
+}
+
+// Add a new high score
+function addHighScore(newScore) {
+  const now = dateFns.format(new Date(), 'yyyy-MM-dd') // Get current date and time
+  highScores.push({ score: newScore, date: now });
+  highScores.sort((a, b) => b.score - a.score); // Sort high scores in descending order
+  highScores = highScores.slice(0, 10); // Keep only the top 10 high scores
+  saveHighScores();
+  displayHighScores();
+}
+
+// Example usage
+ // Add a new high score
